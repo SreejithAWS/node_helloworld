@@ -19,7 +19,7 @@ pipeline{
                    withCredentials([string(credentialsId: 'dockerhub', variable: 'dockerhubpasswd')]){
                         sh "docker login -u sreejitheyne -p ${dockerhubpasswd}"
                     }
-                    sh 'docker push helloworld/node '
+                    sh 'docker push helloworld/node:latest '
                 }
             }
         }
