@@ -15,12 +15,12 @@ pipeline{
         }
         stage('Push to Docker Hub'){
             steps{
-                script{
-                   withCredentials([string(credentialsId: 'dockerhub', variable: 'dockerhubpasswd')]){
-                        sh "docker login -u sreejitheyne -p ${dockerhubpasswd}"
-                    }
-                    sh 'docker push helloworld/node:latest '
-                }
+                script {
+                    withCredentials([string(credentialsId: 'dockerhub', variable: 'dockerhubpasswd')]) {
+                    sh "echo \$dockerhubpasswd | docker login --username sreejitheyne --password-stdin"
+                     }
+                     sh 'docker push helloworld/node:latest'
+                 }
             }
         }
     }
