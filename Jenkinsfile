@@ -1,5 +1,9 @@
 pipeline{
-    agent any
+    agent {
+        docker {
+            sh ' node:latest '
+        }
+    }
     stages{
         stage('Code fetching'){
             steps{
@@ -23,5 +27,6 @@ pipeline{
                  }
             }
         }
+    }
     }
 }
